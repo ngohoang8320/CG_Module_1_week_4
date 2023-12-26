@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    function Circle(radius, color) {
+        this.radius = radius
+        this.color = color
+
+        this.getRadius = function () {
+            return this.radius
+        }
+
+        this.getArea = function () {
+            let area = Math.PI * this.radius * this.radius
+            return area
+        }
+    }
+
+    let cir1 = new Circle(10, 'Red')
+
+    let cir2 = new Circle(100, 'Blue')
+
+    document.write('The area of this circle is: ' + cir1.getArea() + ', and the color is: ' + cir1.color + '.<br>')
+    document.write('The area of this circle is: ' + cir2.getArea() + ', and the color is: ' + cir2.color + '.')
+</script>
