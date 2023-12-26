@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    //create a class
+    function myDate(day, month, year) {
+        this.day = day
+        this.month = month
+        this.year = year
+
+        this.getDay = function () {
+            return this.day;
+        }
+
+        this.getMonth = function () {
+            return this.month;
+        }
+
+        this.getYear = function () {
+            return this.year;
+        }
+
+        this.setDay = function (day) {
+            this.day = day
+        }
+
+        this.setMonth = function (month) {
+            this.month = month
+        }
+
+        this.setYear = function (year) {
+            this.year = year
+        }
+    }
+
+    //create an object
+    let date = new myDate(26, 12, 2023)
+
+    date.setDay(26)
+    date.setMonth(10)
+    date.setYear(2024)
+
+    document.write(date.getDay() + '.')
+    document.write(date.getMonth() + '.')
+    document.write(date.getYear() + '<br>')
+
+</script>
