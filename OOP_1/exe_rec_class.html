@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="display" width="500px" height="500px" style="border: 1px solid gray;"></canvas>
+</body>
+
+</html>
+
+<script>
+    let Rectangle = function (width, height) {
+        this.width = width
+        this.height = height
+
+        this.area = function () {
+            return this.width * this.height
+        }
+
+        this.perimeter = function () {
+            return (this.width + this.height) * 2
+        }
+
+        this.display = function () {
+            let ctx = document.getElementById('display').getContext('2d')
+
+            ctx.beginPath()
+            ctx.fillStyle = 'violet'
+            // ctx.fillStyle = 'rgb(0,255,0)'
+            ctx.fillRect(50, 50, this.width, this.height)
+        }
+    }
+
+    let rect = new Rectangle(100, 50)
+
+    rect.display()
+
+    document.write('<br>')
+    document.write('Perimeter: ' + rect.perimeter() + '<br>')
+    document.write('Area: ' + rect.area())
+</script>
