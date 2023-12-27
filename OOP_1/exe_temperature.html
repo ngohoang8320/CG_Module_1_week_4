@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    let Temperature = function (c_degree) {
+        this.c_degree = parseInt(c_degree)
+
+        this.getK = function () {
+            return c_degree + 273.15 + ' Kevin degree.'
+        }
+
+        this.getF = function () {
+            return c_degree * (9 / 5) + 32 + ' Fahrenheit degree.'
+        }
+    }
+
+    let tem = new Temperature(25)
+
+    document.write(tem.c_degree + ' Celsius. <br>')
+    document.write(tem.getK() + '<br>')
+    document.write(tem.getF())
+</script>
