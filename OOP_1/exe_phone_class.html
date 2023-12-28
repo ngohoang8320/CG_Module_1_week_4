@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <style>
+        .label {
+            display: inline-block;
+            width: 120px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <!--  <span style="display: inline-block">
+        <div>
+            <input type="text" name="battery" id="batter_1" style="width: 50px; margin-left: 200px;">
+        </div>
+        <div>
+            <span class="label">Make message: </span>
+            <input type="text" id="make_mess_1">
+        </div>
+        <div>
+            <span class="label">Message receive: </span>
+            <textarea name="" id="receive_mess_1" cols="20" rows="10"></textarea>
+        </div>
+
+        <button>Turn ON</button>
+        <button>Turn OFF</button>
+        <button>Charge</button>
+    </span>
+
+    <span style="margin-left: 150px; display: inline-block">
+        <div>
+            <input type="text" name="battery" id="battery_2" style="width: 50px; margin-left: 200px;">
+        </div>
+        <div>
+            <span class="label">Make message: </span>
+            <input type="text" id="make_mess_2">
+        </div>
+        <div>
+            <span class="label">Message receive: </span>
+            <textarea name="" id="receive_mess_2" cols="20" rows="10"></textarea>
+        </div>
+        <button>Turn ON</button>
+        <button>Turn OFF</button>
+        <button>Charge</button>
+    </span> -->
+</body>
+
+</html>
+
+<script>
+    let Mobile = function (name) {
+        this.name = name
+
+        this.battery = 100
+
+        this.mess_current = ''
+
+        this.mess_given = []
+
+        this.mess_sent = []
+
+        this.on_off = false
+
+
+        this.onOrOff = function () {
+            return this.on_off
+        }
+
+        this.wakeItUp = function () {
+            this.on_off = true
+            this.battery = Math.floor(Math.random() * 101)
+            console.log('This ' + this.name + ' is waken up.')
+        }
+
+        this.beatItDown = function () {
+            this.on_off = false
+            console.log('This ' + this.name + ' is beaten down.')
+        }
+
+        this.charge = function () {
+            if (this.battery < 100) {
+                this.battery = 100
+                console.log('This ' + this.name + ' is full now.')
+            }
+            else {
+                console.log('IT FULL!')
+            }
+        }
+
+        this.textMess = function (mess) {
+            if (this.on_off) {
+                this.mess_current = mess
+                console.log('A message\'s just made from ' + this.name + '.')
+                this.battery -= 1
+            }
+            else {
+                console.log('Turn on your ' + this.name + ' phone first.')
+            }
+        }
+
+        this.takenMess = function (mess) {
+            if (this.on_off) {
+                this.mess_given.push(mess)
+                console.log('A message\'s just given from ' + this.name + '.')
+                this.battery -= 1
+            }
+            else {
+                console.log('Turn on your ' + this.name + ' phone first.')
+            }
+        }
+
+        this.sentMess = function (mess, phone) {
+            if (this.on_off) {
+                if (phone.on_off) {
+                    phone.takenMess(mess)
+                    this.mess_sent.push(mess)
+                    console.log('A message\'s just sent from ' + this.name + '.')
+                    this.battery -= 1
+                }
+                else {
+                    console.log('Turn on the ' + phone.name + ' first.')
+                }
+
+            }
+            else {
+                console.log('Turn on your ' + this.name + ' phone first.')
+            }
+        }
+
+        this.displayTakenMessBox = function () {
+            if (this.on_off) {
+                console.log('Taken message box of ' + this.name + '.')
+                for (let index in this.mess_given) {
+                    console.log((parseInt(index) + 1) + ': ' + this.mess_given[index])
+                }
+                this.battery -= 1
+            }
+            else {
+                console.log('Turn on your ' + this.name + ' phone first.')
+            }
+        }
+
+        this.displaySendMessBox = function () {
+            if (this.on_off) {
+                console.log('Sent message box of ' + this.name + '.')
+                for (let index in this.mess_sent) {
+                    console.log((parseInt(index) + 1) + ': ' + this.mess_sent[index + 1])
+                }
+                this.battery -= 1
+            }
+            else {
+                console.log('Turn on your ' + this.name + ' phone first.')
+            }
+        }
+    }
+
+    let android = new Mobile('Android')
+    let iphone = new Mobile('Iphone')
+
+    android.wakeItUp()
+    iphone.wakeItUp()
+
+    android.textMess('Hello, this is an android phone 😎.')
+
+    android.sentMess(android.mess_current, iphone)
+
+    iphone.displayTakenMessBox()
+
+
+</script>
