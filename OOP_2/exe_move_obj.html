@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Objects</title>
+</head>
+
+<body>
+    <div id="game"></div>
+</body>
+
+</html>
+
+<script>
+    /**
+     * Edited by bap on 28/12/2023.
+     */
+
+    function Girl(image, top, left, size, speed) {
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.speed = speed
+
+        this.fTop = top
+        // this.fLeft = left
+
+        this.getGirlElement = function () {
+            return '<img width="' + this.size + '"' +
+                // ' height="' + this.size + '"' +
+                ' src="' + this.image + '"' +
+                ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
+        }
+
+        this.moveRight = function () {
+            this.left += (speed * 50);
+            console.log('ok: ' + this.left);
+        }
+
+        this.moveDown = function () {
+            this.top += (speed * 50);
+            console.log('ok: ' + this.top);
+        }
+        this.moveLeft = function () {
+            this.left -= (speed * 50);
+            console.log('ok: ' + this.top);
+        }
+
+        this.moveUp = function () {
+            this.top -= (speed * 50);
+            console.log('ok: ' + this.top);
+        }
+
+    }
+
+    var girl = new Girl('girl.jpg', 20, 30, 200, 1);
+
+    function start() {
+        if (girl.left < window.innerWidth - girl.size && girl.top <= girl.fTop) {
+            girl.moveRight();
+        }
+        else if (girl.left >= window.innerWidth - girl.size && girl.top <= window.innerHeight - girl.size) {
+            girl.moveDown()
+        }
+        else if (girl.left > 0 && girl.top >= window.innerHeight - girl.size) {
+            girl.moveLeft()
+        }
+        else if (girl.left <= 0 && girl.top > 0) {
+            girl.moveUp()
+        }
+
+        document.getElementById('game').innerHTML = girl.getGirlElement();
+        setTimeout(start, 100)
+    }
+
+    start();
+</script>
