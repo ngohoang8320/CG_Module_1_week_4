@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    let Apple = function () {
+        this.weight = 10;
+
+        this.decrease = function () {
+            this.weight--
+        }
+
+        this.isEmpty = function () {
+            //tocheck
+            if (this.weight == 0) {
+                return true
+            }
+            return false
+        }
+
+        this.getWeight = function () {
+            let w = this.weight
+            console.log('The apple is: ' + w + ' unit now.')
+        }
+    }
+
+    let Human = function () {
+        this.isMale = function () {
+            if (this.gender) {
+                console.log('He is a male.')
+            }
+            console.log('She is a Female.')
+        }
+
+        this.setGender = function (gender) {
+            this.gender = gender
+        }
+
+        this.checkApple = function (apple) {
+            let check = apple.getWeight()
+            let check_return = 'The apple is ' + check + ' unit left.'
+            return check_return
+        }
+
+        this.eat = function (apple) {
+            console.log(this.name + ' eat the apple.')
+            apple.decrease()
+            this.weight++
+        }
+
+        this.say = function () {
+
+        }
+
+        this.getName = function () {
+            let gName = this.name
+        }
+
+        this.setName = function (name) {
+            this.name = name
+        }
+
+        this.getWeight = function () {
+            console.log(this.name + ' is ' + this.weight + ' unit.')
+        }
+
+        this.setWeight = function (weight) {
+            this.weight = weight
+        }
+    }
+
+    let adam = new Human()
+    let eva = new Human()
+
+    let apple = new Apple()
+
+    adam.setWeight(65)
+    eva.setWeight(55)
+
+    adam.setName('Adam')
+    eva.setName('Eva')
+
+    for (apple.weight; apple.weight > 0;) {
+        adam.eat(apple)
+        apple.getWeight()
+        adam.getWeight()
+
+        eva.eat(apple)
+        apple.getWeight()
+        eva.getWeight()
+    }
+
+</script>
